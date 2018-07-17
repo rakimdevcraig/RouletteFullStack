@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="clearfix">
+    <section>
+      <h3>Casino Admin</h3>
+      <% if (user.local.email) { %>
+        <p>
+          <strong>id</strong>:
+          <%= user._id %><br>
+            <strong>email</strong>:
+            <%= user.local.email %><br>
+        </p>
+
+    </section>
+    <section class="links">
+      <a href="/game">Play the game</a>
+      <a href="/unlink/local" class="btn btn-default">Unlink</a>
+      <% } else { %>
+        <a href="/connect/local" class="btn btn-default">Connect Local</a>
+        <% } %>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </section>
+  </header>
+
+<section>
+
+</section>
+
+
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
