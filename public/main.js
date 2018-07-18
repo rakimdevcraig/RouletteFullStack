@@ -2,7 +2,6 @@
 let nums = ['img/one.png','img/two.png','img/three.png','img/four.jpg','img/five.png'];
 // get the numbers to spin
 let src = document.getElementById('uno').src
-let email = document.getElementById('userEmail').innerHTML
 
 // handles the user placing a bet
 document.getElementById('enter').onclick = function placeBet (){
@@ -91,19 +90,18 @@ function winningCondition(){
   }
 }
 // test
-
-function winningCondition2(){
-  let roulette = document.getElementById('numimg').getAttribute('src');
-  let guess2 = document.getElementById('dos').getAttribute('src');
-if (roulette === guess2){
-  displayCompleteMessage("You won");
-  document.getElementById('winnings').innerHTML = moneyBet*2
-} else {
-  displayCompleteMessage("You lost");
-  document.getElementById('winnings').innerHTML = "0"
-}
-
-}
+// function winningCondition2(){
+//   let roulette = document.getElementById('numimg').getAttribute('src');
+//   let guess2 = document.getElementById('dos').getAttribute('src');
+// if (roulette === guess2){
+//   displayCompleteMessage("You won");
+//   document.getElementById('winnings').innerHTML = moneyBet*2
+// } else {
+//   displayCompleteMessage("You lost");
+//   document.getElementById('winnings').innerHTML = "0"
+// }
+//
+// }
 // test
 
 function displayCompleteMessage(msg){
