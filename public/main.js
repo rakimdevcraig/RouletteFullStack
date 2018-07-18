@@ -80,7 +80,6 @@ function winningCondition(){
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'email': email
       })
     })
     // } else if (roulette === guess2){
@@ -90,39 +89,23 @@ function winningCondition(){
     displayCompleteMessage("You lost");
     document.getElementById('winnings').innerHTML = "0"
   }
+}
+// test
+
+function winningCondition2(){
+  let roulette = document.getElementById('numimg').getAttribute('src');
+  let guess2 = document.getElementById('dos').getAttribute('src');
+if (roulette === guess2){
+  displayCompleteMessage("You won");
+  document.getElementById('winnings').innerHTML = moneyBet*2
+} else {
+  displayCompleteMessage("You lost");
+  document.getElementById('winnings').innerHTML = "0"
+}
 
 }
+// test
 
 function displayCompleteMessage(msg){
   document.getElementsByClassName('result')[0].innerHTML = msg ;
 }
-
-
-
-// -------------------------testing ------------------------------------------------------
-
-// let update = document.getElementById('stop')
-// let winnings = document.getElementById('winnings')
-// update.addEventListener('click', function () {
-//   fetch('/', {
-//   method: 'put',
-//   headers: {'Content-Type': 'application/json'},
-//   body: JSON.stringify({
-//   'amountWon': 'winnings'
-//   })
-//   })
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-// -------------------------testing ------------------------------------------------------

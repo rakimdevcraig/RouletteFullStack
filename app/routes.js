@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db, ObjectId) {
 
   // normal routes ===============================================================
 
@@ -34,41 +34,16 @@ module.exports = function(app, passport, db) {
     res.redirect('/');
   });
 
-  // message board routes ===============================================================
 
-  // This is the collection for customer orders
-  // app.post('/messages', (req, res) => {
-  //   db.collection('results').save({winnings:req.body.winnings, complete: false }, (err, result) => {
-  //     if (err) return console.log(err)
-  //     console.log('saved to database')
-  //     res.redirect('/menu')
-  //   })
-  // })
 
-  // ------------------------------testing -------------------------------------------------
 
-  app.put('/results', (req, res) => {
-    db.collection('results')
-    .findOneAndUpdate({}, {
-      $set: {
-        name: req.body.winnings,
-        quote: req.body.quote
-      }
-    }, {
-      sort: {_id: -1},
-      upsert: true
-    }, (err, result) => {
-      if (err) return res.send(err)
-      res.send(result)
-    })
-  })
 
   // updating the wins in the database
   app.put('/wins', (req,res) => {
-    console.log(req.body.email)
-    // TODO: figure how to pass email and password from isLoggedIn
-    db.collection('users')
-    .findOneAndUpdate({'local': {email: '12345.com', password:"$2a$08$B1Il5uI0GeHJ8o7InSVF8.0hCY/JE3qdij/xWBSU5t8Y/cO5c7Bgu"} },{
+    var collection = db.collection('users');
+    let uId = ObjectId(req.session.passport.user)
+    collection.findOneAndUpdate({"_id": uId}, {
+      // .findOneAndUpdate({'local': {email: '12345.com', password:"$2a$08$B1Il5uI0GeHJ8o7InSVF8.0hCY/JE3qdij/xWBSU5t8Y/cO5c7Bgu"} },{
       // left side info we're updating in database right side=information we're taking from front end
       '$inc': { 'results.wins': 1 }
       },  (err, result) => {
@@ -96,6 +71,10 @@ module.exports = function(app, passport, db) {
   //     res.send(result)
   //   })
   // })
+
+  // ---------------------------- testing ----------------------------------------------------------
+
+
 
   // Will delete from customerOrder collections
   app.delete('/remove', (req, res) => {
