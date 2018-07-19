@@ -8,15 +8,39 @@ module.exports = function(app, passport, db,) {
   });
 
 
-  // PROFILE SECTION =========================
+  // Casino owner ======================================
   app.get('/profile', isLoggedIn, function(req, res) {
-    db.collection('results').find().toArray((err, result) => {
-      if (err) return console.log(err)
+    db.collection('results').find().toArray((e, r) => {
       res.render('profile.ejs', {
+        wins: r[0].wins,
+        losses: r[0].losses,
       })
     })
   });
 
+
+
+  // casino routes ===============================================================
+      app.put('/casino', (req, res) => {
+        let result = req.body.result
+        let type = "losses"
+        console.log(req.body.wins)
+        if (result){
+          type = "wins"
+        }
+        db.collection('results')
+          .findOneAndUpdate({}, {
+            $inc: {
+              [type]: req.body.wins +1
+            }
+          }, {
+            sort: {_id: -1},
+            upsert: true
+          }, (err, result) => {
+            if (err) return res.send(err)
+            res.send(result)
+          })
+        })
 
 
 

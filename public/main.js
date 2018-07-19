@@ -3,7 +3,6 @@ let nums = ['img/one.png','img/two.png','img/three.png','img/four.jpg','img/five
 let gamesPlayed = 0
 let wins = 0
 let losses = 0
-// get the numbers to spin
 
 // handles the user placing a bet
 document.getElementById('enter').onclick = function placeBet (){
@@ -67,12 +66,14 @@ function endRotation(){
 
 document.getElementById('stop').addEventListener('click',function (){
   endRotation()
+  // runs the function end rotation when the button with the stop
+  // element is clicked
   let roulette = document.getElementById('numimg').getAttribute('src');
   console.log(roulette)
   gamesPlayed++
+  // everytime the stop button is clicked a game has finished so we add to the games played counter
   document.getElementById('gamesPlayed').innerHTML = gamesPlayed
-  // runs the function end rotation when the button with the stop
-  // element is clicked
+
   document.getElementById('bet').innerHTML = "0"
 
   winningCondition()
@@ -81,26 +82,32 @@ document.getElementById('stop').addEventListener('click',function (){
 function winningCondition(){
   let roulette = document.getElementById('numimg').getAttribute('src');
   let moneyBet = parseInt(document.getElementById('money').value)
-
-  // let guess =
+  // if the image src that you stopped on matches the img src that you initially chose then you win
   if (roulette === guess){
     displayCompleteMessage("You won");
     document.getElementById('winnings').innerHTML = moneyBet*2
-    fetch('/wins', {
-      // where i'm going in the server for this put
+    fetch('casino', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
+        'result': true,
+        'wins': wins
       })
     })
-    // } else if (roulette === guess2){
-    //   console.log("you've won")
-    // this is what i tried but it makes it so that if i end on 1 or 2 then i win even if i pick 1 as the first image
+    // everytime you win it gets added to the counter
     wins++
     document.getElementById('wins').innerHTML = wins
+    //
   } else {
     displayCompleteMessage("You lost");
-    document.getElementById('winnings').innerHTML = "0"
+    fetch('casino', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'result': false,
+        'losses': losses
+      })
+    })
     losses++
     document.getElementById('losses').innerHTML = losses
   }
