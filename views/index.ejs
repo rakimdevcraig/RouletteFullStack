@@ -2,16 +2,19 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <section>
-    <a href="/login">Login</a>
-    <% if (user.local.email) { %>
-    <span id="userEmail"><%= user.local.email %> </span>
-    <% } %>
+    <a href="/login" class="btn btn-default"></span>Login</a>
+      <a href="/signup" class="btn btn-default"></span>Signup</a>
     <span class="result"></span>
+</section>
+<section>
+  <span >Games Played:</span><span id="gamesPlayed">0</span>
+  <span> Wins:</span><span id="wins">0</span>
+  <span>Losses</span><span id="losses:">0</span>
 </section>
   <section class="spinner">
     <section id="border">
@@ -25,29 +28,29 @@
     <section class="row uno">
       <section class="first item">
         <img id="uno" src="img/one.png" alt="one">
-        <span class="one">1</span>
+        <span class="one"></span>
       </section>
       <section class="second item">
         <img id="dos" src="img/two.png" alt="two">
-        <span class="two">2</span>
+        <span class="two"></span>
       </section>
       <section class="third item">
         <img id="tres" src="img/three.png" alt="three">
-        <span class="three">3</span>
+        <span class="three"></span>
       </section>
     </section>
 
     <section class="row dos">
       <section class="fourth item">
         <img id="cuatro" src="img/four.jpg" alt="four">
-        <span class="four">4</span>
+        <span class="four"></span>
       </section>
       <section class="fifth item">
         <img id="cinco" src="img/five.png" alt="five">
-        <span class="five">5</span>
+        <span class="five"></span>
       </section>
       <section class="sixth item">
-        <span class="six">6</span>
+        <span class="six"></span>
       </section>
     </section>
   </section>
@@ -73,8 +76,8 @@
 
   <section>
     <h1>Instructions</h1>
-    <p>click an image (right now only num 1 works), click spin and stop on the number 1 to update the database with a win I don't have a fetch
-    on the losing condition right now. </p>
+    <p>click whichever image on the right you think you'll be able to stop the spinner on,
+      click spin and stop when you think the spinner is at the number you guessed </p>
   </section>
 
 

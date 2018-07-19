@@ -9,35 +9,19 @@
 </head>
 
 <body>
-  <header class="clearfix">
-    <section>
-      <h3>Casino Admin</h3>
-      <% if (user.local.email) { %>
-        <p>
-          <strong>id</strong>:
-          <%= user._id %><br>
-            <strong>email</strong>:
-            <%= user.local.email %><br>
-        </p>
 
-    </section>
-    <section class="links">
-      <a href="/game">Play the game</a>
-      <a href="/unlink/local" class="btn btn-default">Unlink</a>
-      <% } else { %>
-        <a href="/connect/local" class="btn btn-default">Connect Local</a>
-        <% } %>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </section>
-  </header>
+  <section class="page-header text-center">
+    <h1>Admin Page</h1>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  </section>
 
-<section>
+  <section>
 
-</section>
+  </section>
 
 
 
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 
 </body>
 

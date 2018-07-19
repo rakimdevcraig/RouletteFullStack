@@ -1,32 +1,25 @@
-module.exports = function(app, passport, db, ObjectId) {
+module.exports = function(app, passport, db,) {
 
   // normal routes ===============================================================
 
   // show the home page (will also have our login links)
   app.get('/', function(req, res) {
-    res.render('login.ejs');
+    res.render('index.ejs');
   });
-
-  app.get('/game', isLoggedIn, function(req, res) {
-    db.collection('users').find().toArray((err, result) => {
-      if (err) return console.log(err)
-      res.render('index.ejs', {
-        user : req.user
-      })
-    })
-  });
-
 
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function(req, res) {
-    db.collection('users').find().toArray((err, result) => {
+    db.collection('results').find().toArray((err, result) => {
       if (err) return console.log(err)
       res.render('profile.ejs', {
-        user : req.user
       })
     })
   });
+
+
+
+
 
   // LOGOUT ==============================
   app.get('/logout', function(req, res) {
@@ -40,7 +33,7 @@ module.exports = function(app, passport, db, ObjectId) {
 
   // updating the wins in the database
   app.put('/wins', (req,res) => {
-    var collection = db.collection('users');
+    var collection = db.collection('results');
     let uId = ObjectId(req.session.passport.user)
     collection.findOneAndUpdate({"_id": uId}, {
       // .findOneAndUpdate({'local': {email: '12345.com', password:"$2a$08$B1Il5uI0GeHJ8o7InSVF8.0hCY/JE3qdij/xWBSU5t8Y/cO5c7Bgu"} },{
@@ -76,13 +69,7 @@ module.exports = function(app, passport, db, ObjectId) {
 
 
 
-  // Will delete from customerOrder collections
-  app.delete('/remove', (req, res) => {
-    db.collection('results').findOneAndDelete({name:req.body.name , type:req.body.type}, (err, result) => {
-      if (err) return res.send(500, err)
-      res.send('Message deleted!')
-    })
-  })
+
 
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================

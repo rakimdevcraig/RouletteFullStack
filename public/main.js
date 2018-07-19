@@ -1,7 +1,9 @@
 
 let nums = ['img/one.png','img/two.png','img/three.png','img/four.jpg','img/five.png'];
+let gamesPlayed = 0
+let wins = 0
+let losses = 0
 // get the numbers to spin
-let src = document.getElementById('uno').src
 
 // handles the user placing a bet
 document.getElementById('enter').onclick = function placeBet (){
@@ -14,17 +16,29 @@ document.getElementById('enter').onclick = function placeBet (){
   }
 }
 
-// need to tie all of the click event to function or variable not sure
-// if user chooses number 1 as the image that will be stopped on
+let guess = null; // start the guess at null, it will get set to something when they click on an image
+// if user clicks the number 1 that will register as their guess
 document.getElementById('uno').onclick = function userGuess (){
-  let guess1 = document.getElementById('uno').getAttribute('src');
-  console.log(guess1)
+ guess = document.getElementById('uno').getAttribute('src');
+ console.log(guess)
+}
+document.getElementById('dos').onclick = function userGuess (){
+ guess = document.getElementById('dos').getAttribute('src');
+ console.log(guess)
+}
+document.getElementById('tres').onclick = function userGuess (){
+ guess = document.getElementById('tres').getAttribute('src');
+ console.log(guess)
+}
+document.getElementById('cuatro').onclick = function userGuess (){
+ guess = document.getElementById('cuatro').getAttribute('src');
+ console.log(guess)
+}
+document.getElementById('cinco').onclick = function userGuess (){
+ guess = document.getElementById('cinco').getAttribute('src');
+ console.log(guess)
 }
 
-document.getElementById('dos').onclick = function userGuess (){
-  let guess2 = document.getElementById('dos').getAttribute('src');
-  console.log(guess2)
-}
 
 function spin (){
   let randomImage1 = nums[Math.floor(Math.random() * nums.length)];
@@ -51,27 +65,25 @@ function endRotation(){
   // clears the interval that we set so the image stops
 }
 
-document.getElementById('stop').onclick = function (){
+document.getElementById('stop').addEventListener('click',function (){
   endRotation()
   let roulette = document.getElementById('numimg').getAttribute('src');
   console.log(roulette)
+  gamesPlayed++
+  document.getElementById('gamesPlayed').innerHTML = gamesPlayed
   // runs the function end rotation when the button with the stop
   // element is clicked
   document.getElementById('bet').innerHTML = "0"
+
   winningCondition()
-}
+})
 
 function winningCondition(){
   let roulette = document.getElementById('numimg').getAttribute('src');
-  let guess1 = document.getElementById('uno').getAttribute('src');
-  let guess2 = document.getElementById('dos').getAttribute('src');
-  let guess3 = document.getElementById('tres').getAttribute('src');
-  let guess4 = document.getElementById('cuatro').getAttribute('src');
-  let guess5 = document.getElementById('cinco').getAttribute('src');
   let moneyBet = parseInt(document.getElementById('money').value)
 
   // let guess =
-  if (roulette === guess1){
+  if (roulette === guess){
     displayCompleteMessage("You won");
     document.getElementById('winnings').innerHTML = moneyBet*2
     fetch('/wins', {
@@ -84,25 +96,15 @@ function winningCondition(){
     // } else if (roulette === guess2){
     //   console.log("you've won")
     // this is what i tried but it makes it so that if i end on 1 or 2 then i win even if i pick 1 as the first image
+    wins++
+    document.getElementById('wins').innerHTML = wins
   } else {
     displayCompleteMessage("You lost");
     document.getElementById('winnings').innerHTML = "0"
+    losses++
+    document.getElementById('losses').innerHTML = losses
   }
 }
-// test
-// function winningCondition2(){
-//   let roulette = document.getElementById('numimg').getAttribute('src');
-//   let guess2 = document.getElementById('dos').getAttribute('src');
-// if (roulette === guess2){
-//   displayCompleteMessage("You won");
-//   document.getElementById('winnings').innerHTML = moneyBet*2
-// } else {
-//   displayCompleteMessage("You lost");
-//   document.getElementById('winnings').innerHTML = "0"
-// }
-//
-// }
-// test
 
 function displayCompleteMessage(msg){
   document.getElementsByClassName('result')[0].innerHTML = msg ;
