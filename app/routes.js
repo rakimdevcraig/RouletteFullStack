@@ -31,7 +31,7 @@ module.exports = function(app, passport, db,) {
         db.collection('results')
           .findOneAndUpdate({}, {
             $inc: {
-              [type]: req.body.wins +1
+              [type]: 1
             }
           }, {
             sort: {_id: -1},
