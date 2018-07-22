@@ -37,6 +37,10 @@ document.getElementById('cinco').onclick = function userGuess (){
  guess = document.getElementById('cinco').getAttribute('src');
  console.log(guess)
 }
+document.getElementById('seis').onclick = function userGuess (){
+ guess = document.getElementById('seis').getAttribute('src');
+ console.log(guess)
+}
 
 
 function spin (){

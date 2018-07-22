@@ -1,6 +1,8 @@
 Full-Stack Roulette Application
 This is a full-stack game that allows the user to choose an image that they think the spinner will land on and attempt to stop the spinner on that image.
 
+![pic](pic.jpg)
+
 How It's Made:
 Tech used: HTML, CSS, JavaScript, Node-JS, MongoDB, Express and Passport
 
