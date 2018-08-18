@@ -19,27 +19,27 @@ let guess = null; // start the guess at null, it will get set to something when 
 // if user clicks the number 1 that will register as their guess
 document.getElementById('uno').onclick = function userGuess (){
  guess = document.getElementById('uno').getAttribute('src');
- console.log(guess)
+  document.getElementById('numberChosen').innerHTML = "You Chose number 1 now spin and try to stop it on 1 to win your prize!"
 }
 document.getElementById('dos').onclick = function userGuess (){
  guess = document.getElementById('dos').getAttribute('src');
- console.log(guess)
+ document.getElementById('numberChosen').innerHTML = "You Chose number 2 now spin and try to stop it on 12 to win your prize!"
 }
 document.getElementById('tres').onclick = function userGuess (){
  guess = document.getElementById('tres').getAttribute('src');
- console.log(guess)
+ document.getElementById('numberChosen').innerHTML = "You Chose number 3 now spin and try to stop it on 3 to win your prize!"
 }
 document.getElementById('cuatro').onclick = function userGuess (){
  guess = document.getElementById('cuatro').getAttribute('src');
- console.log(guess)
+ document.getElementById('numberChosen').innerHTML = "You Chose number 4 now spin and try to stop it on 4 to win your prize!"
 }
 document.getElementById('cinco').onclick = function userGuess (){
  guess = document.getElementById('cinco').getAttribute('src');
- console.log(guess)
+ document.getElementById('numberChosen').innerHTML = "You Chose number 5 now spin and try to stop it on 5 to win your prize!"
 }
 document.getElementById('seis').onclick = function userGuess (){
  guess = document.getElementById('seis').getAttribute('src');
- console.log(guess)
+ document.getElementById('numberChosen').innerHTML = "You Chose number 6 now spin and try to stop it on 6 to win your prize!"
 }
 
 
