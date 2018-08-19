@@ -1,5 +1,5 @@
 
-let nums = ['img/one.png','img/two.png','img/three.png','img/four.jpg','img/five.png'];
+let nums = ['img/one.png','img/two.png','img/three.png','img/four.jpg','img/five.png', 'img/six.png'];
 let gamesPlayed = 0
 let wins = 0
 let losses = 0
@@ -23,7 +23,7 @@ document.getElementById('uno').onclick = function userGuess (){
 }
 document.getElementById('dos').onclick = function userGuess (){
  guess = document.getElementById('dos').getAttribute('src');
- document.getElementById('numberChosen').innerHTML = "You Chose number 2 now spin and try to stop it on 12 to win your prize!"
+ document.getElementById('numberChosen').innerHTML = "You Chose number 2 now spin and try to stop it on 2 to win your prize!"
 }
 document.getElementById('tres').onclick = function userGuess (){
  guess = document.getElementById('tres').getAttribute('src');
